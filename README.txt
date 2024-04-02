@@ -1,3 +1,3 @@
-this is the backend that holds the data + images and doesn't let them out unless a user presents themselves with an oauth2.0 access token that is attached to an mcpsmd account on the microsoft graph API
+This is the source code for our backend, which handles the serving of files containing sensitive facility data. The actual files (the amalgamation of JSON files + image files) would be in the same directory that main.py starts up in, but for obvious reasons they're not included in this repo.
 
-for now i'm hosting the public instance on pythonanywhere.org, if you know anywhere better please DM me about that 
+Email Charles Hu (130713@mcpsmd.net) to report any issues, vulnerabilities, bugs, or suggestions. Please do not open a pull request or issue on this repo as I do not routinely check my Github.
