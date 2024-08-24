@@ -52,12 +52,12 @@ def resource():
         return Response("401 UNAUTHORIZED: Missing or malformed Authorization header (must be a Bearer token).", status=401, mimetype='text/plain')
 
     # Second, we are going to check if the user that called for the issuance of this token is a member of MCPSMD
-    if token.split(" ")[1].startswith("testing:") and token.split(" ")[1] in cfg.db_acs:
+    if token.split(" ")[1].startswith("visitor:") and token.split(" ")[1] in cfg.db_acs:
         toLog = toLog + " <accessed via " + token.split(" ")[1] + ", no UPN available> "
-    elif token.split(" ")[1].startswith("testing:") and token.split(" ")[1] not in cfg.db_acs:
-        toLog = toLog + " -> 401:Bad Token (testing token used)"
+    elif token.split(" ")[1].startswith("visitor:") and token.split(" ")[1] not in cfg.db_acs:
+        toLog = toLog + " -> 401:Bad Token (visitor token used)"
         closeOffLog(toLog)
-        return Response("401 UNAUTHORIZED: testing:* token provided was not correct.", status=401, mimetype='text/plain')
+        return Response("401 UNAUTHORIZED: visitor:* token provided was not correct.", status=401, mimetype='text/plain')
 
     else:
         url = "https://graph.microsoft.com/v1.0/me"
